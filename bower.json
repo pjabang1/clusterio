@@ -1,0 +1,30 @@
+{
+    "name": "clusterio",
+    "version": "0.0.1",
+    "homepage": "https://github.com/pjabang1/clusterio",
+    "authors": [
+        "Pa Essa Jabang <pjabang@gmail.com>"
+    ],
+    "description": "A js cluster analysis library. Includes Hierarchical (agglomerative) clustering and K-means clustering.",
+    "license": "MIT",
+    "ignore": [
+        "node_modules",
+        "bower_components",
+        "package.json",
+        "lib",
+        "test",
+        "src",
+        "gulpfile.js",
+        ".gitignore",
+        "README.md",
+        "travis.yml",
+        ".bowercc",
+        ".editorconfig"
+    ],
+    "dependencies": {
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/pjabang1/clusterio.git"
+    }
+}

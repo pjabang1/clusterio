@@ -1,0 +1,21 @@
+{
+    "name": "mrt-frontend",
+    "version": "0.0.1",
+    "description": "MRT Frontend",
+    "author": "Pa Essa Jabang",
+    "contributors": [
+    ],
+    "scripts": {
+        "postinstall": "node node_modules/bower/bin/bower install"
+    },
+    "devDependencies": {
+        "bower": "^1.3.9",
+        "gulp": "~3.8.0",
+        "gulp-less": "~1.3.3",
+        "gulp-watch": "^0.6.9",
+        "gulp-uglify": "1.0.2",
+        "gulp-concat": "2.4.3",
+        "karma": "~0.12.0",
+        "karma-jasmine": "~0.2.2"
+    }
+}
