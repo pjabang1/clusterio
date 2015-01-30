@@ -2,8 +2,8 @@
 var HierarchicalClustering = function(distance, linkage, threshold) {
    this.distance = distance;
    this.linkage = linkage;
-   this.threshold = threshold == undefined ? Infinity : threshold;
-}
+   this.threshold = threshold === undefined ? Infinity : threshold;
+};
 
 HierarchicalClustering.prototype = {
    cluster : function(items, snapshotPeriod, snapshotCb) {
@@ -27,7 +27,7 @@ HierarchicalClustering.prototype = {
 
       for (var i = 0; i < this.clusters.length; i++) {
          for (var j = 0; j <= i; j++) {
-            var dist = (i == j) ? Infinity : 
+            var dist = (i === j) ? Infinity : 
                this.distance(this.clusters[i].value, this.clusters[j].value);
             this.dists[i][j] = dist;
             this.dists[j][i] = dist;
@@ -41,7 +41,7 @@ HierarchicalClustering.prototype = {
       var merged = this.mergeClosest();
       var i = 0;
       while (merged) {
-        if (snapshotCb && (i++ % snapshotPeriod) == 0) {
+        if (snapshotCb && (i++ % snapshotPeriod) === 0) {
            snapshotCb(this.clusters);           
         }
         merged = this.mergeClosest();
@@ -93,19 +93,19 @@ HierarchicalClustering.prototype = {
          if (c1.key == ci.key) {
             dist = Infinity;            
          }
-         else if (this.linkage == "single") {
+         else if (this.linkage === "single") {
             dist = this.dists[c1.key][ci.key];
             if (this.dists[c1.key][ci.key] > this.dists[c2.key][ci.key]) {
                dist = this.dists[c2.key][ci.key];
             }
          }
-         else if (this.linkage == "complete") {
+         else if (this.linkage === "complete") {
             dist = this.dists[c1.key][ci.key];
             if (this.dists[c1.key][ci.key] < this.dists[c2.key][ci.key]) {
                dist = this.dists[c2.key][ci.key];              
             }
          }
-         else if (this.linkage == "average") {
+         else if (this.linkage === "average") {
             dist = (this.dists[c1.key][ci.key] * c1.size
                    + this.dists[c2.key][ci.key] * c2.size) / (c1.size + c2.size);
          }
@@ -120,7 +120,7 @@ HierarchicalClustering.prototype = {
       // update cached mins
       for (var i = 0; i < this.clusters.length; i++) {
          var key1 = this.clusters[i].key;        
-         if (this.mins[key1] == c1.key || this.mins[key1] == c2.key) {
+         if (this.mins[key1] === c1.key || this.mins[key1] === c2.key) {
             var min = key1;
             for (var j = 0; j < this.clusters.length; j++) {
                var key2 = this.clusters[j].key;
@@ -139,13 +139,13 @@ HierarchicalClustering.prototype = {
 
       return true;
    }
-}
+};
 
-cluster.hcluster = function(items, distance, linkage, threshold, snapshot, snapshotCallback) {
+clusterio.hcluster = function(items, distance, linkage, threshold, snapshot, snapshotCallback) {
    distance = distance || "euclidean";
    linkage = linkage || "average";
 
-   if (typeof distance == "string") {
+   if (typeof distance === "string") {
      distance = distances[distance];
    }
    var clusters = (new HierarchicalClustering(distance, linkage, threshold))
@@ -155,4 +155,4 @@ cluster.hcluster = function(items, distance, linkage, threshold, snapshot, snaps
       return clusters[0]; // all clustered into one
    }
    return clusters;
-}
+};

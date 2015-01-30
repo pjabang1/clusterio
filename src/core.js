@@ -1,2 +1,2 @@
-var cluster = window.cluster || {};
-window.cluster = cluster;
+var clusterio = window.clusterio || {};
+window.clusterio = clusterio;

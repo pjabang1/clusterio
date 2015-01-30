@@ -16,7 +16,7 @@ KMeans.prototype.classify = function(point, distance) {
             index = 0;
 
     distance = distance || "euclidean";
-    if (typeof distance == "string") {
+    if (typeof distance === "string") {
         distance = distances[distance];
     }
 
@@ -35,7 +35,7 @@ KMeans.prototype.cluster = function(points, k, distance, snapshotPeriod, snapsho
     k = k || Math.max(2, Math.ceil(Math.sqrt(points.length / 2)));
 
     distance = distance || "euclidean";
-    if (typeof distance == "string") {
+    if (typeof distance === "string") {
         distance = distances[distance];
     }
 
@@ -57,7 +57,7 @@ KMeans.prototype.cluster = function(points, k, distance, snapshotPeriod, snapsho
         for (var j = 0; j < k; j++) {
             var assigned = [];
             for (var i = 0; i < assignment.length; i++) {
-                if (assignment[i] == j) {
+                if (assignment[i] === j) {
                     assigned.push(points[i]);
                 }
             }
@@ -76,7 +76,7 @@ KMeans.prototype.cluster = function(points, k, distance, snapshotPeriod, snapsho
                 }
                 newCentroid[g] = sum / assigned.length;
 
-                if (newCentroid[g] != centroid[g]) {
+                if (newCentroid[g] !== centroid[g]) {
                     movement = true;
                 }
             }
@@ -85,22 +85,22 @@ KMeans.prototype.cluster = function(points, k, distance, snapshotPeriod, snapsho
             clusters[j] = assigned;
         }
 
-        if (snapshotCb && (iterations++ % snapshotPeriod == 0)) {
+        if (snapshotCb && (iterations++ % snapshotPeriod === 0)) {
             snapshotCb(clusters);
         }
     }
 
     return clusters;
-}
+};
 
 KMeans.prototype.toJSON = function() {
     return JSON.stringify(this.centroids);
-}
+};
 
 KMeans.prototype.fromJSON = function(json) {
     this.centroids = JSON.parse(json);
     return this;
-}
+};
 
 clusterio.KMeans = KMeans;
 

@@ -8,7 +8,7 @@ bower install clusterio
 # K-means
 
 ```javascript
-var clusterfck = require("clusterfck");
+
 
 var colors = [
    [20, 20, 80],
@@ -21,7 +21,7 @@ var colors = [
 ];
 
 // Calculate clusters.
-var clusters = clusterfck.kmeans(colors, 3);
+var clusters = clusterio.kmeans(colors, 3);
 ```
 
 The second argument to `kmeans` is the number of clusters you want (default is `Math.sqrt(n/2)` where `n` is the number of vectors). It returns an array of clusters, for this example:
@@ -39,7 +39,7 @@ The second argument to `kmeans` is the number of clusters you want (default is `
 For classification, instantiate a new Kmeans() object.
 
 ```javascript
-var kmeans = new clusterfck.Kmeans();
+var kmeans = new clusterio.Kmeans();
 
 // Calculate clusters.
 var clusters = kmeans.cluster(colors, 3);
@@ -70,7 +70,7 @@ var clusterIndex = kmeans.classify([0, 0, 225]);
 var centroids = [ [ 35.5, 31.5, 85 ], [ 250, 255, 253 ], [ 227.5, 6.5, 15.5 ] ];
 
 // Initialize constructor with centroids.
-var kmeans = new clusterfck.Kmeans(centroids);
+var kmeans = new clusterio.Kmeans(centroids);
 
 // Calculate cluster index.
 var clusterIndex = kmeans.classify([0, 0, 225]);
@@ -94,7 +94,6 @@ var k = centroids.length;
 # Hierarchical
 
 ```javascript
-var clusterfck = require("clusterfck");
 
 var colors = [
    [20, 20, 80],
@@ -103,7 +102,7 @@ var colors = [
    [100, 54, 255]
 ];
 
-var clusters = clusterfck.hcluster(colors);
+var clusters = clusterio.hcluster(colors);
 ```
 
 `hcluster` returns an object that represents the hierarchy of the clusters with `left` and `right` subtrees. The leaf clusters have a `value` property which is the vector from the data set.
@@ -134,5 +133,5 @@ var clusters = clusterfck.hcluster(colors);
 Specify the distance metric, one of `"euclidean"` (default), `"manhattan"`, and `"max"`. The linkage criterion is the third argument, one of `"average"` (default), `"single"`, and `"complete"`.
 
 ```javascript
-var tree = clusterfck.hcluster(colors, "euclidean", "single");
+var tree = clusterio.hcluster(colors, "euclidean", "single");
 ```
