@@ -1,6 +1,5 @@
 describe('clusterio.kmeans', function() {
-
-    it('should return 3 clusters as expected', function() {
+    it('should return clusters as expected', function() {
         var colors = [
             [20, 20, 80],
             [22, 22, 90],
@@ -16,6 +15,8 @@ describe('clusterio.kmeans', function() {
             [[20, 20, 80], [22, 22, 90], [0, 30, 70], [100, 54, 100]],
             [[250, 255, 253]]
         ];
-        expect(clusters).toEqual(expected);
+        // console.log(clusters.sort());
+        // console.log(expected);
+        expect(clusters.sort()).toEqual(expected.sort());
     });
 });
