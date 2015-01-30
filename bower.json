@@ -2,6 +2,7 @@
     "name": "clusterio",
     "version": "0.0.1",
     "homepage": "https://github.com/pjabang1/clusterio",
+    "main": "dist/js/clusterio.js",
     "authors": [
         "Pa Essa Jabang <pjabang@gmail.com>"
     ],
